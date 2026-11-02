@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkpoint Project - Pokémon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/media.css" />
+</head>
+<body>
+
+  <header id="inicio" class="header border border-3 border-black">
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="nav-logo-text">CP 5</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links d-flex align-items-center" id="navLinks">
+        <li><a href="#inicio" class="nav-link">Início</a></li>
+        <li><a href="#integrantes" class="nav-link">Integrantes</a></li>
+        <li><a href="#pokemons" class="nav-link">Pokémons</a></li>
+        <li><a href="#cartas" class="nav-link">Cartas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="hero-banner">
+      <img src="images/global/banner-full.png" alt="Banner Pokémon" class="hero-banner-img" />
+      <div class="hero-content">
+        <div class="hero-title-box">
+          <img src="images/global/moldura.png" class="hero-frame" />
+
+          <div class="hero-bg">
+        
+          </div>
+
+          <h1 class="hero-title">
+            Checkpoint<br/>Project
+          </h1>
+        </div>
+        <button class="hero-btn" onclick="document.getElementById('integrantes').scrollIntoView({behavior:'smooth'})">Start</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="integrantes" class="section-integrantes">
+    <h2 class="integrantes-title">Choose your character</h2>
+    <div class="integrantes-box">
+      <ul class="integrantes-list" id="integrantesList">
+        <li class="integrante-item">
+          <img src="images/icons/seta-hover.png" class="seta-icon" alt="seta" />
+          <span>Camile Silva</span>
+        </li>
+        <li class="integrante-item">
+          <img src="images/icons/seta-hover.png" class="seta-icon" alt="seta" />
+          <span>Lucas Caetano</span>
+        </li>
+        <li class="integrante-item">
+          <img src="images/icons/seta-hover.png" class="seta-icon" alt="seta" />
+          <span>Marco Conte</span>
+        </li>
+        <li class="integrante-item">
+          <img src="images/icons/seta-hover.png" class="seta-icon" alt="seta" />
+          <span>Sofia Rodrigues</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pokemons" class="section-pokemons">
+    <div class="pokemons-inner">
+      <aside class="pokemons-filters">
+        <h2 class="pokemons-title">Descubra os<br/>pokemons</h2>
+        <ul class="filter-list">
+          <li class="filter-item active" data-filter="todos">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Todos</span>
+          </li>
+          <li class="filter-item" data-filter="agua">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Água</span>
+          </li>
+          <li class="filter-item" data-filter="fogo">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Fogo</span>
+          </li>
+          <li class="filter-item" data-filter="planta">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Planta</span>
+          </li>
+          <li class="filter-item" data-filter="eletrico">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Elétrico</span>
+          </li>
+          <li class="filter-item" data-filter="gelo">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Gelo</span>
+          </li>
+          <li class="filter-item" data-filter="normal">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Normal</span>
+          </li>
+          <li class="filter-item" data-filter="psiquico">
+            <img src="images/icons/seta-hover.png" class="filter-seta" alt="seta" />
+            <span>Psíquico</span>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="pokemons-grid" id="pokemonsGrid">
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h3 class="modal-pokemon-name" id="modalName"></h3>
+      <div class="modal-info-grid">
+        <div class="modal-info-item">
+          <span class="modal-label">Altura:</span>
+          <span id="modalAltura"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-label">Peso:</span>
+          <span id="modalPeso"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-label">Categoria:</span>
+          <span id="modalCategoria"></span>
+        </div>
+        <div class="modal-info-item">
+          <span class="modal-label">Habilidades:</span>
+          <span id="modalHabilidades"></span>
+        </div>
+        <div class="modal-info-item modal-tipo">
+          <span class="modal-label">Tipo:</span>
+          <span id="modalTipo"></span>
+        </div>
+        <div class="modal-info-item modal-fraqueza">
+          <span class="modal-label">Fraqueza:</span>
+          <span id="modalFraqueza"></span>
+        </div>
+      </div>
+      <div class="modal-evolutions" id="modalEvolutions"></div>
+    </div>
+  </div>
+
+  <section id="cartas" class="section-cartas">
+    <div class="cartas-inner">
+      <div class="cartas-form-area">
+        <h2 class="cartas-title">Crie sua<br/>própria carta<br/>especial</h2>
+        <div class="cartas-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cartaNome">Nome da carta:</label>
+              <input type="text" id="cartaNome" placeholder="Nome da carta" />
+            </div>
+            <div class="form-group">
+              <label for="cartaVida">Quantidade de vida:</label>
+              <input type="number" id="cartaVida" placeholder="Ex: 120" min="10" max="999" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cartaPokemon">Pokémon:</label>
+              <select id="cartaPokemon">
+                <option value="">Selecione o pokémon</option>
+                <option value="Bulbasaur">Bulbasaur</option>
+                <option value="Charmander">Charmander</option>
+                <option value="Squirtle">Squirtle</option>
+                <option value="Pikachu">Pikachu</option>
+                <option value="Eevee">Eevee</option>
+                <option value="Snorlax">Snorlax</option>
+                <option value="Jigglypuff">Jigglypuff</option>
+                <option value="Lapras">Lapras</option>
+                <option value="Abra">Abra</option>
+                <option value="Growlithe">Growlithe</option>
+                <option value="Ponyta">Ponyta</option>
+                <option value="Pidgey">Pidgey</option>
+                <option value="Clefairy">Clefairy</option>
+                <option value="Caterpie">Caterpie</option>
+                <option value="Bellsprout">Bellsprout</option>
+                <option value="Krabby">Krabby</option>
+                <option value="Goldeen">Goldeen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cartaAtaque">Ataque:</label>
+              <input type="text" id="cartaAtaque" placeholder="Ex: Thunderbolt" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cartaCategoria">Categoria:</label>
+              <select id="cartaCategoria">
+                <option value="">Selecione a categoria</option>
+                <option value="Básico">Básico</option>
+                <option value="Estágio 1">Estágio 1</option>
+                <option value="Estágio 2">Estágio 2</option>
+                <option value="Lendário">Lendário</option>
+                <option value="Especial">Especial</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cartaResistencia">Resistência:</label>
+              <input type="text" id="cartaResistencia" placeholder="Ex: Água -30" />
+            </div>
+          </div>
+          <button class="btn-enviar" id="btnEnviar" onclick="gerarCarta()">Enviar</button>
+        </div>
+      </div>
+
+      <div class="carta-preview-area">
+        <div class="carta-preview" id="cartaPreview">
+          <img src="images/global/card.png" alt="Carta" class="carta-moldura" />
+          <div class="carta-dados" id="cartaDados" style="display:none;">
+            <div class="carta-topo">
+              <span class="carta-nome-display" id="cartaNomeDisplay"></span>
+              <span class="carta-vida-display" id="cartaVidaDisplay"></span>
+            </div>
+            <div class="carta-img-area">
+              <img src="" alt="" id="cartaPokeImg" class="carta-poke-img" />
+            </div>
+            <div class="carta-info-baixo">
+              <div class="carta-categoria-display" id="cartaCategoriaDisplay"></div>
+              <div class="carta-ataque-display" id="cartaAtaqueDisplay"></div>
+              <div class="carta-resistencia-display" id="cartaResistenciaDisplay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-banner-wrap">
+    <img src="images/global/footer-banner.jpg" alt="Pokemon Banner" class="footer-banner-img" />
+    <div class="footer-banner-overlay">
+      <h2 class="footer-banner-title">Explore e divirta-se</h2>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-text">1º ano - Engenharia de Software</p>
+        <p class="footer-text">FIAP - Paulista</p>
+        <p class="footer-text">São Paulo · SP</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-text">Telefone: (12) 3456-7890</p>
+        <p class="footer-text">E-mail: checkpoint@fiap.com.br</p>
+        <p class="footer-text">Redes sociais: @checkpoint</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-text footer-bold">Checkpoint Project</p>
+        <p class="footer-text">Projeto acadêmico desenvolvido<br/>para a disciplina de Front-End.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
